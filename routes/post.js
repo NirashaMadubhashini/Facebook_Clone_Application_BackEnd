@@ -16,11 +16,57 @@ router.get('/', async(req,res)=>{
 })
 
 router.post('/', (req,res)=>{
-    console.log(req.body);
+    const data = req.body
+    const newPost = new Post({
+        user_id: data.user_id,
+        date: data.date,
+        time: data.time,
+        title: data.title,
+        body: data.body
+    });
+    try {
+        const response = newPost.save()
+        res.send("Saved!")
+    } catch (error) {
+        res.send(error)
+    }
 })
 
-router.put('/', (req,res)=>{
-    console.log(req.body);
+router.put('/:id', async(req,res)=>{
+    const data = req.body
+
+    try {
+        const post = await Post.findById(req.params.id)
+        post.user_id = data.user_id,
+            post.date = data.date,
+            post.time = data.time,
+            post.title = data.title,
+            post.body = data.body
+        const response = await post.save()
+
+        res.send("Updated!")
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+router.delete('/:id', async(req,res)=>{
+    try {
+        const post = await Post.findById(req.params.id)
+        const response = post.remove()
+        res.send("Deleted!")
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+router.get('/:id', async(req,res)=>{
+    try {
+        const post = await Post.findById(req.params.id)
+        res.json(post)
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 module.exports = router
