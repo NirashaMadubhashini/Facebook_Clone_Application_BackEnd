@@ -10,7 +10,7 @@ app.use(express.json())
 app.use('/user',user)
 app.use('/post',post)
 
-const url = 'mongodb://127.0.0.1/fb'
+const url = 'mongodb://127.0.0.1/faceBookBackend'
 
 mongoose.connect(url,{useNewUrlParser: true})
 const con = mongoose.connection
