@@ -18,7 +18,6 @@ router.get('/', async(req,res)=>{
 router.post('/', (req,res)=>{
     const data = req.body
     const newUser = new User({
-        id:data.id,
         first_name: data.first_name,
         surename: data.surename,
         gender: data.gender,
@@ -40,7 +39,6 @@ router.put('/:id', async(req,res)=>{
 
     try {
         const user = await User.findById(req.params.id)
-        user.id = data.id
         user.first_name = data.first_name
         user.surename = data.surename
         user.gender = data.gender
