@@ -12,7 +12,7 @@ app.use('/user',user)
 app.use('/post',post)
 app.use('/login',login)
 
-const url = 'mongodb://127.0.0.1/facebookbackend'
+const url = 'mongodb://127.0.0.1/fb'
 
 mongoose.connect(url,{useNewUrlParser: true})
 const con = mongoose.connection
