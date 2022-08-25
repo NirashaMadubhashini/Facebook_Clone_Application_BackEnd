@@ -9,7 +9,8 @@ const User = require('../Models/user.models')
 router.get('/', async(req,res)=>{
     try {
         const users = await User.find()
-        res.send(users)
+        res.json(users)
+        // res.send(users)
     } catch (error) {
         res.send(error)
     }
@@ -28,7 +29,8 @@ router.post('/', (req,res)=>{
     });
     try {
         const response = newUser.save()
-        res.send("Saved!")
+        res.json(response)
+        // res.send("Saved!")
     } catch (error) {
         res.send(error)
     }
@@ -47,8 +49,8 @@ router.put('/:id', async(req,res)=>{
         user.phone = data.phone
         user.email = data.email
         const response = await user.save()
-
-        res.send("Updated!")
+        res.json(response)
+        // res.send("Updated!")
     } catch (error) {
         res.send(error)
     }
@@ -58,7 +60,8 @@ router.delete('/:id', async(req,res)=>{
     try {
         const user = await User.findById(req.params.id)
         const response = user.remove()
-        res.send("Deleted!")
+        res.json(response)
+        // res.send("Deleted!")
     } catch (error) {
         res.send(error)
     }
@@ -67,7 +70,8 @@ router.delete('/:id', async(req,res)=>{
 router.get('/:id', async(req,res)=>{
     try {
         const user = await User.findById(req.params.id)
-        res.send(user)
+        res.json(user)
+        // res.send(user)
     } catch (error) {
         res.send(error)
     }
