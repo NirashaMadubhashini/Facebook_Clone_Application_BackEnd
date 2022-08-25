@@ -6,16 +6,16 @@ app.use(express.json())
 
 const Post = require('../Models/post.models')
 
-router.get('/', async(req,res)=>{
+router.get('/', async (req, res) => {
     try {
         const posts = await Post.find()
-        res.send(posts)
+        res.json(posts)
     } catch (error) {
         res.send(error)
     }
 })
 
-router.post('/', (req,res)=>{
+router.post('/', (req, res) => {
     const data = req.body
     const newPost = new Post({
         user_id: data.user_id,
@@ -26,13 +26,14 @@ router.post('/', (req,res)=>{
     });
     try {
         const response = newPost.save()
-        res.send("Saved!")
+        res.json(response)
+        // res.send(response)
     } catch (error) {
         res.send(error)
     }
 })
 
-router.put('/:id', async(req,res)=>{
+router.put('/:id', async (req, res) => {
     const data = req.body
 
     try {
@@ -42,25 +43,27 @@ router.put('/:id', async(req,res)=>{
             post.time = data.time,
             post.title = data.title,
             post.body = data.body
-        const response = await post.save()
 
-        res.send("Updated!")
+        const response = await post.save()
+        res.json(response)
+        // res.json(response+"Updated!")
     } catch (error) {
         res.send(error)
     }
 })
 
-router.delete('/:id', async(req,res)=>{
+router.delete('/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
         const response = post.remove()
-        res.send("Deleted!")
+        res.json(response)
+        // res.json(response+"Deleted!")
     } catch (error) {
         res.send(error)
     }
 })
 
-router.get('/:id', async(req,res)=>{
+router.get('/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
         res.json(post)
