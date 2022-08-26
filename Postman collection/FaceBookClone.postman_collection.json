@@ -292,7 +292,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"geeth@gmail.com\",\r\n    \"password\": \"24234\"\r\n}",
+              "raw": "{\r\n    \"email\": \"geeth@gmail.com\",\r\n    \"password\": \"geeth123\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
