@@ -35,7 +35,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\":\"Geeth\",\r\n    \"surename\":\"Malinda\",\r\n    \"gender\":\"Male\",\r\n    \"dob\":\"2000/04/06\",\r\n    \"password\":\"geeth123\",\r\n    \"phone\":\"0777182352\",\r\n    \"email\":\"geeth@gmail.com\"\r\n}",
+              "raw": "{\r\n    \"first_name\":\"Geeth\",\r\n    \"surename\":\"Malinda\",\r\n    \"gender\":\"Male\",\r\n    \"dob\":\"2000/04/01\",\r\n    \"password\":\"geeth123\",\r\n    \"phone\":\"0774196413\",\r\n    \"email\":\"geeth@gmail.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -103,7 +103,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\":\"Geeth\",\r\n    \"surename\":\"Malinda\",\r\n    \"gender\":\"Male\",\r\n    \"dob\":\"2000/04/01\",\r\n    \"password\":\"geeth123\",\r\n    \"phone\":\"0777182352\",\r\n    \"email\":\"geeth@gmail.com\"\r\n}",
+              "raw": "{\r\n    \"first_name\":\"Geeth\",\r\n    \"surename\":\"Wijesekara\",\r\n    \"gender\":\"Male\",\r\n    \"dob\":\"2000/04/01\",\r\n    \"password\":\"geeth123\",\r\n    \"phone\":\"0774196413\",\r\n    \"email\":\"geeth@gmail.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -241,6 +241,73 @@
               "path": [
                 "post",
                 "6304f8547943706fd5b06b2e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get post by User",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"6304d9723efbdaa94b5435d9\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/post",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "post"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "item": [
+        {
+          "name": "Login",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"geeth@gmail.com\",\r\n    \"password\": \"24234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "login"
               ]
             }
           },
