@@ -6,16 +6,17 @@ app.use(express.json())
 
 const Post = require('../Models/post.models')
 
-router.get('/', async (req, res) => {
+router.get('/', async(req,res)=>{
     try {
         const posts = await Post.find()
         res.json(posts)
+        // res.send(posts)
     } catch (error) {
         res.send(error)
     }
 })
 
-router.post('/', (req, res) => {
+router.post('/', (req,res)=>{
     const data = req.body
     const newPost = new Post({
         user_id: data.user_id,
@@ -27,13 +28,13 @@ router.post('/', (req, res) => {
     try {
         const response = newPost.save()
         res.json(response)
-        // res.send(response)
+        // res.send("Saved!")
     } catch (error) {
         res.send(error)
     }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', async(req,res)=>{
     const data = req.body
 
     try {
@@ -43,30 +44,42 @@ router.put('/:id', async (req, res) => {
             post.time = data.time,
             post.title = data.title,
             post.body = data.body
-
         const response = await post.save()
         res.json(response)
-        // res.json(response+"Updated!")
+        // res.send("Updated!")
     } catch (error) {
         res.send(error)
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id)
         const response = post.remove()
         res.json(response)
-        // res.json(response+"Deleted!")
+        // res.send("Deleted!")
     } catch (error) {
         res.send(error)
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async(req,res)=>{
     try {
         const post = await Post.findById(req.params.id)
         res.json(post)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+router.get('/', async(req,res)=>{
+    try {
+        const posts = await Post.find()
+        posts.map((p)=>{
+            if(p.user_id === req.body.userId){
+                res.send(p)
+            }
+        })
     } catch (error) {
         res.send(error)
     }
